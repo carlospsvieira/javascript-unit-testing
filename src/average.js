@@ -12,11 +12,12 @@
 */
 
 const average = (arr) => {
+  // test 3
   if (arr.length === 0) return undefined;
-
+  // test 2
   const isNumber = arr.every((num) => typeof num === 'number');
   if (!isNumber) return undefined;
-
+  // test 1
   const avgArr = arr.reduce((a, b) => a + b, 0) / arr.length;
   return Math.round(avgArr);
 };
