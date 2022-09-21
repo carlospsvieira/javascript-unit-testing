@@ -93,6 +93,26 @@
 // - retornará o valor somado acrescido de 10%.
 // DICA: para isso, você precisará percorrer tanto o objeto da chave `food` quanto o objeto da chave `drink`.
 
-const createMenu = () => {};
+const createMenu = (menu) => {
+  const obj = {
+    fetchMenu: () => menu,
+    consumption: [],
+    order: (str) => obj.consumption.push(str),
+    pay: () => {
+      // To "add a percent to a number" means "multiply the number by 1.1 ": 
+
+      let bill = 0;
+      for (let item of obj.consumption) {
+        if (item in menu.food) bill += menu.food[item];
+        if (item in menu.drinks) bill += menu.drinks[item];
+      }
+      const sum = bill * 1.1;
+
+      // The Number.prototype.toFixed() method formats a number using fixed-point notation.
+      return Number(sum.toFixed(2));
+    },
+  };
+  return obj;
+};
 
 module.exports = createMenu;
